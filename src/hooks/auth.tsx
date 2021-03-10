@@ -22,8 +22,8 @@ const AuthContext = createContext<AuthContextDTO>({} as AuthContextDTO);
 export const AuthProvider: React.FC = ({ children }) => {
 	
 	const [data, setData] = useState<AuthState>(() => {
-		const token = localStorage.getItem('@GoBarber:token');
-		const user = localStorage.getItem('@GoBarber:user');
+		const token = localStorage.getItem('@ravencode:token');
+		const user = localStorage.getItem('@ravencode:user');
 
 		if (token && user) {
 			return { token, user: JSON.parse(user) };
@@ -40,15 +40,15 @@ export const AuthProvider: React.FC = ({ children }) => {
 
 		const { token, user } = response.data;
 
-		localStorage.setItem('@GoBarber:token', token);
-		localStorage.setItem('@GoBarber:user', JSON.stringify(user));
+		localStorage.setItem('@ravencode:token', token);
+		localStorage.setItem('@ravencode:user', JSON.stringify(user));
 
 		setData({token, user})
 	}, [])
 
 	const signOut = useCallback(() => {
-		localStorage.removeItem('@GoBarber:token');
-		localStorage.removeItem('@GoBarber:user');
+		localStorage.removeItem('@ravencode:token');
+		localStorage.removeItem('@ravencode:user');
 	}, [])
 
 	return (

@@ -7,7 +7,7 @@ import {
 const SignIn: React.FC = () => {
   return (
     <div>
-      <StyledH1>Publico</StyledH1>
+      <StyledH1>SignIn</StyledH1>
     </div>
   );
 }

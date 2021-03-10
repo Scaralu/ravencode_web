@@ -1,60 +1,62 @@
-import React, { createContext, useContext, useCallback, useState } from 'react';
-import { uuid } from 'uuidv4';
+export {};
 
-import ToastContainer from '../components/ToastContainer';
+// import React, { createContext, useContext, useCallback, useState } from 'react';
+// import { uuid } from 'uuidv4';
 
-interface ToastContextDTO {
-	addToast(message: Omit<ToastMessage, 'id'>): void;
-	removeToast(id: string): void;
-}
+// import ToastContainer from '../components/ToastContainer';
 
-export interface ToastMessage {
-	id: string;
-	type?: 'success' | 'error' | 'info'
-	title: string;
-	description?: string;
-}
+// interface ToastContextDTO {
+// 	addToast(message: Omit<ToastMessage, 'id'>): void;
+// 	removeToast(id: string): void;
+// }
 
-const ToastContext = createContext<ToastContextDTO>( {} as ToastContextDTO);
+// export interface ToastMessage {
+// 	id: string;
+// 	type?: 'success' | 'error' | 'info'
+// 	title: string;
+// 	description?: string;
+// }
 
-const ToastProvider: React.FC = ({ children }) => {
-	const [messages, setMessages] = useState<ToastMessage[]>([]); 
+// const ToastContext = createContext<ToastContextDTO>( {} as ToastContextDTO);
 
-	const addToast = useCallback(({type, title, description}: Omit<ToastMessage, 'id'>) => {
+// const ToastProvider: React.FC = ({ children }) => {
+// 	const [messages, setMessages] = useState<ToastMessage[]>([]); 
+
+// 	const addToast = useCallback(({type, title, description}: Omit<ToastMessage, 'id'>) => {
 		
-		const id = uuid();
+// 		const id = uuid();
 
-		const toast = {
-			id,
-			type,
-			title,
-			description
-		}
+// 		const toast = {
+// 			id,
+// 			type,
+// 			title,
+// 			description
+// 		}
 
-		setMessages((state) => [...state, toast])
+// 		setMessages((state) => [...state, toast])
 
-	}, []);
+// 	}, []);
 
 
-	const removeToast = useCallback((id: string) => {
-		setMessages(state => state.filter((message => message.id !== id)))
-	}, []);
+// 	const removeToast = useCallback((id: string) => {
+// 		setMessages(state => state.filter((message => message.id !== id)))
+// 	}, []);
 
-	return (
-		<ToastContext.Provider value={{ addToast, removeToast}}>
-			{children}
-			<ToastContainer messages={messages} />
-		</ToastContext.Provider>
-	)
-}
+// 	return (
+// 		<ToastContext.Provider value={{ addToast, removeToast}}>
+// 			{children}
+// 			<ToastContainer messages={messages} />
+// 		</ToastContext.Provider>
+// 	)
+// }
 
-function useToast(): ToastContextDTO {
-	const context = useContext(ToastContext);
+// function useToast(): ToastContextDTO {
+// 	const context = useContext(ToastContext);
 
-	if (!context) {
-		throw new Error('useToast must be used within a ToastProvider')
-	}
+// 	if (!context) {
+// 		throw new Error('useToast must be used within a ToastProvider')
+// 	}
 
-	return context;
-}
-export {useToast, ToastProvider};
+// 	return context;
+// }
+// export {useToast, ToastProvider};

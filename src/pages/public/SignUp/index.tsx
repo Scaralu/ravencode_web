@@ -7,7 +7,7 @@ import {
 const SignUp: React.FC = () => {
   return (
     <div>
-      <StyledH1>Publico</StyledH1>
+      <StyledH1>signup</StyledH1>
     </div>
   );
 }
